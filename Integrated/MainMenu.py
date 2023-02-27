@@ -10,7 +10,7 @@ import pyinputplus as pyip
 import module21_1
 import module22_3
 import funct2_last
-
+import mod21_2
 
 # Creating Spark Session
 sp = SparkSession.builder.appName("Customer").getOrCreate()
@@ -50,7 +50,7 @@ list_ssn = list(df_pd_cust['SSN'])
 
 pd_credit = df_sp_cc.toPandas()
 list_cc = list(pd_credit['CUST_CC_NO'])
-
+list_type = list(pd_credit['TRANSACTION_TYPE'].drop_duplicates())
 
 list_main_menu = ["Transactions made by customers by Zipcode",
                   "Count and total values of transactions for a given type",
@@ -71,6 +71,8 @@ while True:
         break
     elif var_main_menu == 'Transactions made by customers by Zipcode':
         module21_1.test_call(df_sp_cc_cust)
+    elif var_main_menu == "Count and total values of transactions for a given type":
+        mod21_2.test_tran_type_value(df_sp_cc, list_type)
     elif var_main_menu == 'Display the transactions made by a customer between two dates':
 
         funct2_last.test_call2(df_sp_cc_cust, list_ssn)
