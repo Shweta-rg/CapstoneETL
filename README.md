@@ -1,5 +1,5 @@
 # CapstoneETL
-capstone project
+
 ## CapstoneETL -Customer Credit-Card segments
 # About The Project
 # Background
