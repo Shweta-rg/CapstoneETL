@@ -88,13 +88,7 @@ list_main_menu = ["Transactions made by customers by Zipcode",
                   "Modify the existing account details of a customer",
                   "Monthly bill for credit card num for given month year",
                   "Display transactions by customer bet two dates",
-                  "DAV: TransType has a high rate of trans",
-                  "DAV: State has a high number of customers",
-                  "DAV: Customer with highest transaction amount",
-                  "DAV:Percentage of applicatn approved  self-employ",
-                  "DAV:Percentage of rejected married male applicants",
-                  "DAV:top 3 months with the largest transaction data",
-                  "DAV:Branch with highest healthcare transactions",
+
                   "Data Analysis And visualization",
                   "Exit"]
 
@@ -122,47 +116,35 @@ while True:
     elif var_main_menu == 'Monthly bill for credit card num for given month year':
         module22_3.test_call3(df_sp_cc, list_cc)
 
-    elif var_main_menu == 'DAV: TransType has a high rate of trans':
-        visualization.transact_type_cnt(pd_credit)
+    elif var_main_menu == "Data Analysis And visualization":
 
-    elif var_main_menu == "DAV: State has a high number of customers":
-        visualization.state_transaction(df_pd_cust)
+        while True:
+            list_DAV_menu = [
+                "DAV: TransType has a high rate of trans",
+                "DAV: State has a high number of customers",
+                "DAV: Customer with highest transaction amount",
+                "DAV:Percent of applicatn approved  self-employ",
+                "DAV:Percent of married male applicants",
+                "top 3 months with the largest transaction data",
+                "Branch with highest healthcare transactions",
+                "Go Back To main"]
+            var_DAV_menu = pyip.inputMenu(list_DAV_menu, numbered=True)
+            print(var_DAV_menu)
+            if var_DAV_menu == 'Go Back To main':
+                break
+            elif var_DAV_menu == 'DAV: TransType has a high rate of trans':
+                visualization.transact_type_cnt(pd_credit)
 
-    elif var_main_menu == "DAV: Customer with highest transaction amount":
-        visualization.cust_transact(pd_credit)
-    elif var_main_menu == "DAV:Percentage of applicatn approved  self-employ":
-        visualization5.test_self_percent()
-    elif var_main_menu == "DAV:Percentage of rejected married male applicants":
-        visualization5.test_male_status()
-    elif var_main_menu == "DAV:top 3 months with the largest transaction data":
-        visualization5.test_top3_tran_mon()
-    elif var_main_menu == "DAV:Branch with highest healthcare transactions":
-        visualization5.test_healthcare()
-    # elif var_main_menu == "Data Analysis And visualization":
-    #     list_DAV_menu = pyip.inputMenu['DAV: TransType has a high rate of trans',
-    #                                    "DAV: State has a high number of customers",
-    #                                    "DAV: Customer with highest transaction amount"]
-    #     while True:
-    #         var_DAV_menu = pyip.inputMenu(list_DAV_menu, numbered=True)
-    #         print(var_main_menu)
-    #         if var_main_menu == 'Exit':
-    #             break
-    #         elif var_main_menu == 'Transactions made by customers by Zipcode':
-    #             module21_1.test_call(df_sp_cc_cust)
-    #         elif var_main_menu == 'Count and total values of transactions for type':
-    #             mod21_2.test_tran_type_value(df_sp_cc, list_type)
-    #         elif var_main_menu == "Total number & values of trans in a give state":
-    #             mod21_3.test_tran_state(df_sp_cc_br, list_state)
-    #         elif var_main_menu == "Check the existing account details of a customer":
-    #             mod22_1_2.test_exist_cust(list_ssn, df_sp_cust)
+            elif var_DAV_menu == "DAV: State has a high number of customers":
+                visualization.state_transaction(df_pd_cust)
 
-    # var_ssn = pyip.inputInt("Enter SSN : ")
-    # # var_ans
-    # if m.validate_ssn(df_pd_cust, var_ssn):
-    #     m.edit_info(df_cust, var_ssn)
-    #     print('Back from edit menu')
-    #     continue
-    # else:
-    #     if var_ssn == 'N':
-    #         break
-    #     continue
+            elif var_DAV_menu == "DAV: Customer with highest transaction amount":
+                visualization.cust_transact(pd_credit)
+            elif var_DAV_menu == "DAV:Percent of applicatn approved  self-employ":
+                visualization5.test_self_percent()
+            elif var_DAV_menu == "DAV:Percent of married male applicants":
+                visualization5.test_male_status()
+            elif var_DAV_menu == "top 3 months with the largest transaction data":
+                visualization5.test_top3_tran_mon()
+            elif var_DAV_menu == "Branch with highest healthcare transactions":
+                visualization5.test_healthcare()
