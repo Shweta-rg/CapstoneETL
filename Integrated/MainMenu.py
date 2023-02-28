@@ -7,6 +7,7 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import *
 import pyinputplus as pyip
 
+
 from secret import username
 from secret import password
 
@@ -16,7 +17,7 @@ import mod22_1_2
 import funct2_last
 import mod21_2
 import mod21_3
-import mod22_2
+import mod222new
 import visualization
 import visualization5
 
@@ -91,9 +92,10 @@ list_main_menu = ["Transactions made by customers by Zipcode",
                   "DAV: State has a high number of customers",
                   "DAV: Customer with highest transaction amount",
                   "DAV:Percentage of applicatn approved  self-employ",
-                  "DAV:percentage of rejected married male applicants",
+                  "DAV:Percentage of rejected married male applicants",
                   "DAV:top 3 months with the largest transaction data",
                   "DAV:Branch with highest healthcare transactions",
+                  "Data Analysis And visualization",
                   "Exit"]
 
 
@@ -112,7 +114,7 @@ while True:
         mod22_1_2.test_exist_cust(list_ssn, df_sp_cust)
 
     elif var_main_menu == "Modify the existing account details of a customer":
-        mod22_2.test_edit_menu(df_sp_cust, list_ssn)
+        mod222new.update_cust_details(df_sp_cust, list_ssn)
 
     elif var_main_menu == 'Display transactions by customer bet two dates':
         funct2_last.test_call2(df_sp_cc_cust, list_ssn)
@@ -121,7 +123,7 @@ while True:
         module22_3.test_call3(df_sp_cc, list_cc)
 
     elif var_main_menu == 'DAV: TransType has a high rate of trans':
-        visualization.cust_transact(pd_credit)
+        visualization.transact_type_cnt(pd_credit)
 
     elif var_main_menu == "DAV: State has a high number of customers":
         visualization.state_transaction(df_pd_cust)
@@ -136,6 +138,23 @@ while True:
         visualization5.test_top3_tran_mon()
     elif var_main_menu == "DAV:Branch with highest healthcare transactions":
         visualization5.test_healthcare()
+    # elif var_main_menu == "Data Analysis And visualization":
+    #     list_DAV_menu = pyip.inputMenu['DAV: TransType has a high rate of trans',
+    #                                    "DAV: State has a high number of customers",
+    #                                    "DAV: Customer with highest transaction amount"]
+    #     while True:
+    #         var_DAV_menu = pyip.inputMenu(list_DAV_menu, numbered=True)
+    #         print(var_main_menu)
+    #         if var_main_menu == 'Exit':
+    #             break
+    #         elif var_main_menu == 'Transactions made by customers by Zipcode':
+    #             module21_1.test_call(df_sp_cc_cust)
+    #         elif var_main_menu == 'Count and total values of transactions for type':
+    #             mod21_2.test_tran_type_value(df_sp_cc, list_type)
+    #         elif var_main_menu == "Total number & values of trans in a give state":
+    #             mod21_3.test_tran_state(df_sp_cc_br, list_state)
+    #         elif var_main_menu == "Check the existing account details of a customer":
+    #             mod22_1_2.test_exist_cust(list_ssn, df_sp_cust)
 
     # var_ssn = pyip.inputInt("Enter SSN : ")
     # # var_ans
