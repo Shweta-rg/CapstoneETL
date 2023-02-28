@@ -69,11 +69,18 @@ def cust_transact(pd_credit):
     df_cc1 = df_cc1.sort_values(by=['TRANSACTION_VALUE'], ascending=False)
     df_cctop = df_cc1.head(10)
 
-    df_cctop.plot(kind='bar', x='CUST_SSN',
+    df_cctop.plot(kind='barh', x='CUST_SSN',
                   y='TRANSACTION_VALUE', figsize=(20, 10))
     plt.title('Top 10 customers')
     plt.xlabel('Customers-ID')
     # plt.xticks('CUST_SSN')
     # plt.xticks([i for i in df_cctop['CUST_SSN']], 'CUST_SSN', rotation='65')
     plt.ylabel('Transaction value')
+
+    # for index, value in enumerate(df_cctop):
+    #     label = format(int(value), ',')
+    # plt.annotate(label, xy=(value - 47000, index - 0.10), color='red')
     plt.show()
+
+
+# cust_transact(pd_credit)
