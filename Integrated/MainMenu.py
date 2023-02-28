@@ -7,11 +7,16 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import *
 import pyinputplus as pyip
 
+from secret import username
+from secret import password
+
 import module21_1
 import module22_3
+import mod22_1_2
 import funct2_last
 import mod21_2
 import mod21_3
+import mod22_2
 import visualization
 import visualization5
 
@@ -22,21 +27,21 @@ sp = SparkSession.builder.appName("Customer").getOrCreate()
 df_sp_cust = sp.read.format("jdbc") \
     .option("url", "jdbc:mysql://localhost:3306/creditcard_capstone") \
     .option("dbtable", "CDW_SAPP_CUSTOMER") \
-    .option("user", "root") \
-    .option("password", "password") \
+    .option("user", username) \
+    .option("password", password) \
     .load()
 
 df_sp_cc = sp.read.format("jdbc") \
     .option("url", "jdbc:mysql://localhost:3306/creditcard_capstone") \
     .option("dbtable", "CDW_SAPP_CREDIT_CARD") \
-    .option("user", "root") \
-    .option("password", "password") \
+    .option("user", username) \
+    .option("password", password) \
     .load()
 df_sp_br = sp.read.format("jdbc") \
     .option("url", "jdbc:mysql://localhost:3306/creditcard_capstone")  \
     .option("dbtable", "cdw_sapp_branch") \
-    .option("user", "root") \
-    .option("password", "password") \
+    .option("user", username) \
+    .option("password", password) \
     .load()
 query = "(SELECT cc.*, cust.cust_zip \
         FROM cdw_sapp_credit_card as cc \
@@ -44,8 +49,8 @@ query = "(SELECT cc.*, cust.cust_zip \
 df_sp_cc_cust = sp.read.format("jdbc") \
     .option("url", "jdbc:mysql://localhost:3306/creditcard_capstone") \
     .option("dbtable", query) \
-    .option("user", "root") \
-    .option("password", "password") \
+    .option("user", username) \
+    .option("password", password) \
     .load()
 df_sp_cc_cust = df_sp_cc_cust.withColumn('Date',
                                          concat(df_sp_cc_cust['TIMEID'].
@@ -103,14 +108,24 @@ while True:
         mod21_2.test_tran_type_value(df_sp_cc, list_type)
     elif var_main_menu == "Total number & values of trans in a give state":
         mod21_3.test_tran_state(df_sp_cc_br, list_state)
+    elif var_main_menu == "Check the existing account details of a customer":
+        mod22_1_2.test_exist_cust(list_ssn, df_sp_cust)
+
+    elif var_main_menu == "Modify the existing account details of a customer":
+        mod22_2.test_edit_menu(df_sp_cust, list_ssn)
+
     elif var_main_menu == 'Display transactions by customer bet two dates':
         funct2_last.test_call2(df_sp_cc_cust, list_ssn)
+
     elif var_main_menu == 'Monthly bill for credit card num for given month year':
         module22_3.test_call3(df_sp_cc, list_cc)
+
     elif var_main_menu == 'DAV: TransType has a high rate of trans':
         visualization.cust_transact(pd_credit)
+
     elif var_main_menu == "DAV: State has a high number of customers":
         visualization.state_transaction(df_pd_cust)
+
     elif var_main_menu == "DAV: Customer with highest transaction amount":
         visualization.cust_transact(pd_credit)
     elif var_main_menu == "DAV:Percentage of applicatn approved  self-employ":
@@ -120,7 +135,6 @@ while True:
     elif var_main_menu == "DAV:top 3 months with the largest transaction data":
         visualization5.test_top3_tran_mon()
     elif var_main_menu == "DAV:Branch with highest healthcare transactions":
-
         visualization5.test_healthcare()
 
     # var_ssn = pyip.inputInt("Enter SSN : ")
