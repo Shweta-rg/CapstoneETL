@@ -14,7 +14,14 @@ following datasets are used for this project
 •	CDW_SAPP_CREDITCARD.JSON: contains all credit card transaction information.
 
 •	CDW_SAPP_BRANCH.JSON: Each branch’s information and details are recorded in this file. 
- Dataset link.
+ 
+ Dataset link:
+ 
+ https://drive.google.com/drive/folders/1J4a2UndLvVWszHAL2VxJeVXyAHm3xYIp
+ 
+ API link
+ 
+ https://raw.githubusercontent.com/platformps/LoanDataset/main/loan_data.json
 
 
 # Goals
