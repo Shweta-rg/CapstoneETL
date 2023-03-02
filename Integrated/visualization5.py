@@ -37,9 +37,9 @@ def test_self_percent():
 
     pd_sql1.plot(kind='pie', x='self_employed', y='Percent',
                  autopct='%1.1f%%', figsize=(8, 8))
-    plt.title('The percentage of applications approved for self-employed applicants')
+    plt.title('Percentage of approved self employed applicants')
     plt.xlabel('Self-Employed')
-    plt.ylabel('Percentage of Applications')
+    # plt.ylabel('Percentage of Applications')
     # plt.yticks([i for i in ])
     plt.show()
 
@@ -97,9 +97,9 @@ def test_top3_tran_mon():
     print(pd_sql3.dtypes)
 
     pd_sql3.plot(kind='line', x='Month', y='Transaction_value', figsize=(8, 5))
-    plt.title('Percentage of Applicants rejected/approved')
-    plt.xlabel('Application Status')
-    plt.ylabel('Percentage of Married Male Applicants')
+    plt.title('Transaction value based on Month')
+    plt.xlabel('MONTHs')
+    plt.ylabel('Total Transaction Value')
     plt.show()
 
 

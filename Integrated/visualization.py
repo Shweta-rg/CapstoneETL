@@ -1,4 +1,7 @@
 # 3 .. --credit card
+import seaborn as sns
+import plotly.graph_objects as go
+import plotly.express as px
 from pyspark.sql.functions import *
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType, BooleanType, DoubleType
 import matplotlib.pyplot as plt
@@ -7,7 +10,6 @@ from pyspark.sql import SparkSession
 import findspark
 findspark.init()
 findspark.find()
-
 
 sp = SparkSession.builder.appName("customer").getOrCreate()
 
@@ -28,15 +30,29 @@ def transact_type_cnt(pd_credit):
     df1 = pd_credit[['TRANSACTION_TYPE', 'TRANSACTION_VALUE']
                     ].groupby(pd_credit['TRANSACTION_TYPE']).sum()
     df1.reset_index(inplace=True)
+    # sns.relplot(
+    #     data=df1,
+    #     x="TRANSACTION_TYPE", y="TRANSACTION_VALUE", col="time",
+    #     style="smoker", size="size",
+    # )
+    # sns.color_palette("viridis", as_cmap=True)
 
-    df1.plot(kind='bar', x='TRANSACTION_TYPE', y='TRANSACTION_VALUE')
+    df1.plot(kind='bar', x='TRANSACTION_TYPE',
+             y='TRANSACTION_VALUE', color=(0.2, 0.4, 0.6, 0.6))
+
     plt.title('Transaction Counts by Type')
     plt.xlabel('Transaction Type')
     plt.ylabel('Transaction Count')
+    # for index, value in enumerate(df1):
+    #     label = format(int(value, ','))
+    # plt.annotate(label, xy=(value-650, index-0.10), color='Black')
     plt.show()
 
 
+# transact_type_cnt(pd_credit)
+
 # 3.2:Find and plot which state has a high number of customers.
+
 
 def state_transaction(df_pd_cust):
     # 3.2Find and plot which state has a high number of customers..customer
@@ -46,13 +62,16 @@ def state_transaction(df_pd_cust):
 
     df_cust1.reset_index(inplace=True)
     df_cust1
+    fig = px.sunburst(df_cust1, path=['CUST_STATE', 'COUNT'], values='COUNT')
+    fig.show()
+    # df_cust1.plot(kind='bar', x='CUST_STATE', y='COUNT', figsize=(8, 8))
+    # plt.title('Transaction Counts by State')
+    # plt.xlabel('Transaction Type')
 
-    df_cust1.plot(kind='bar', x='CUST_STATE', y='COUNT', figsize=(8, 8))
-    plt.title('Transaction Counts by State')
-    plt.xlabel('Transaction Type')
-
-    plt.ylabel('Transaction Count')
+    # plt.ylabel('Transaction Count')
     plt.show()
+
+# state_transaction(df_pd_cust)
 
 
 # 3.3Find and plot the sum of all transactions for the top 10 customers, and which customer has the highest transaction amount.
@@ -69,18 +88,21 @@ def cust_transact(pd_credit):
     df_cc1 = df_cc1.sort_values(by=['TRANSACTION_VALUE'], ascending=False)
     df_cctop = df_cc1.head(10)
 
-    df_cctop.plot(kind='barh', x='CUST_SSN',
-                  y='TRANSACTION_VALUE', figsize=(20, 10))
-    plt.title('Top 10 customers')
-    plt.xlabel('Customers-ID')
-    # plt.xticks('CUST_SSN')
-    # plt.xticks([i for i in df_cctop['CUST_SSN']], 'CUST_SSN', rotation='65')
-    plt.ylabel('Transaction value')
+    fig = px.scatter(df_cctop, x="CUST_SSN", y="TRANSACTION_VALUE",
+                     title='Top 10 customers', size='TRANSACTION_VALUE', hover_name='CUST_SSN')
+    fig.show()
 
+    # df_cctop.plot(kind='barh', x='CUST_SSN',
+    #               y='TRANSACTION_VALUE', figsize=(20, 10))
+    # plt.title('Top 10 customers')
+    # plt.xlabel('Customers-ID')
+    # # plt.xticks('CUST_SSN')
+    # # plt.xticks([i for i in df_cctop['CUST_SSN']], 'CUST_SSN', rotation='65')
+    # plt.ylabel('Transaction value')
+    # plt.show()
     # for index, value in enumerate(df_cctop):
     #     label = format(int(value), ',')
     # plt.annotate(label, xy=(value - 47000, index - 0.10), color='red')
-    plt.show()
 
 
 # cust_transact(pd_credit)
