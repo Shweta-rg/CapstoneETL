@@ -56,7 +56,10 @@ ETL Pipeline is successfully done by extracting, transformed and loaded in mySql
 used the menu driver user interface through which user can interact and get the results. there is a separate submenu for analysis and findings
 ![mainmenu](https://user-images.githubusercontent.com/118309716/222527007-d9680cee-861b-4509-98be-701c5d3384b1.png)
 
+
 submenu for Data Analysis And Visulizations
+
+
 ![davmenu](https://user-images.githubusercontent.com/118309716/222527753-adc89b14-a35e-45ba-a6b0-b99b86ff5fc8.png)
 
 
@@ -64,20 +67,33 @@ submenu for Data Analysis And Visulizations
 
 ## DAV: State has a high number of customers
 
-![sunburst-state](https://user-images.githubusercontent.com/118309716/222509730-2e6f4870-295d-4f62-ba37-1af725ec70b3.png)
- 
+![sunburst-state](https://user-images.githubusercontent.com/118309716/222528306-b0fcf698-b5cf-41ec-bc2c-a27ed3712e2c.png)
+
  This sunburst grpah shows NY has high number oftransaction values from all the states.their purchasing power is way higher than other states
 ##  DAV:Branch with highest healthcare transactions
 ![14tranBybranch](https://user-images.githubusercontent.com/118309716/221956537-91b40300-e049-41ed-955e-0279735added.png)
 
+shows whihc branch code customers spend most on healthcare, branch code 23 has highest value
+
 ##  DAV:top 3 months with the largest transaction data
-![13monthstatus](https://user-images.githubusercontent.com/118309716/221956589-42684b09-d042-4313-918e-4b3d7ae3446d.png)
+![monthnew](https://user-images.githubusercontent.com/118309716/222532030-6e51d260-f651-4b95-bb60-860466dd7e35.png)
+
+
+May,October, December are months where customer spend most and mainly in month of october
 
 ##  DAV:Percentage of rejected married male applicants
 ![12marriedapprov](https://user-images.githubusercontent.com/118309716/221957689-86f57437-0a2d-4834-af09-9cd098853ffe.png)
 
+
+
 ##  DAV:Percentage of applicatn approved  self-employ
-![11selfemployedpng](https://user-images.githubusercontent.com/118309716/221956645-8b449c0a-4374-49f5-b57d-537249ee345c.png)
+
+![self employed_pie](https://user-images.githubusercontent.com/118309716/222531535-3b1a8b90-7cbc-416d-979c-630860d574e9.png)
+
+
+
+percentage of application approved outo f all the self employed applicants
+
 ## DAV: Customer with highest transaction amount
 ![Screenshot 2023-03-02 111502](https://user-images.githubusercontent.com/118309716/222489495-c25be83a-0f0d-45da-ba11-c121baa8a458.png)
 
