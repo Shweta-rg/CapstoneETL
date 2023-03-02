@@ -53,8 +53,20 @@ Following datasets are used for this project
 
 # Result: 
 ETL Pipeline is successfully done by extracting, transformed and loaded in mySql database where data analyais and visualization was done by using panda and pyspark dataframes and matplotlib to plot different graphs.
+used the menu driver user interface through which user can interact and get the results. there is a separate submenu for analysis and findings
+![mainmenu](https://user-images.githubusercontent.com/118309716/222527007-d9680cee-861b-4509-98be-701c5d3384b1.png)
+
+submenu for Data Analysis And Visulizations
+![davmenu](https://user-images.githubusercontent.com/118309716/222527753-adc89b14-a35e-45ba-a6b0-b99b86ff5fc8.png)
+
 
 # Findings
+
+## DAV: State has a high number of customers
+
+![sunburst-state](https://user-images.githubusercontent.com/118309716/222509730-2e6f4870-295d-4f62-ba37-1af725ec70b3.png)
+ 
+ This sunburst grpah shows NY has high number oftransaction values from all the states.their purchasing power is way higher than other states
 ##  DAV:Branch with highest healthcare transactions
 ![14tranBybranch](https://user-images.githubusercontent.com/118309716/221956537-91b40300-e049-41ed-955e-0279735added.png)
 
@@ -70,13 +82,6 @@ ETL Pipeline is successfully done by extracting, transformed and loaded in mySql
 ![Screenshot 2023-03-02 111502](https://user-images.githubusercontent.com/118309716/222489495-c25be83a-0f0d-45da-ba11-c121baa8a458.png)
 
 Thats hovering scatter plot which shows the customer with high transaction value and its valuable customer for bank.
-
-
-## DAV: State has a high number of customers
-
-![sunburst-state](https://user-images.githubusercontent.com/118309716/222509730-2e6f4870-295d-4f62-ba37-1af725ec70b3.png)
- 
- This sunburst grpah shows NY has high number oftransaction values from all the states.their purchasing power is way higher than other states
 
 
 ## DAV: TransType has a high rate of trans
