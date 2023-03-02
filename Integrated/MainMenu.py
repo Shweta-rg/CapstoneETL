@@ -6,6 +6,8 @@ import pandas as pd
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import *
 import pyinputplus as pyip
+import plotly.express as px
+import plotly.graph_objects as go
 
 
 from secret import username
@@ -68,7 +70,7 @@ list_type = list(pd_credit['TRANSACTION_TYPE'].drop_duplicates())
 
 pd_branch = df_sp_br.toPandas()
 list_state = list(pd_branch['BRANCH_STATE'].drop_duplicates())
-list_state
+# list_state
 
 query2 = "(SELECT br.branch_code , br.branch_state,cc.transaction_value \
             FROM cdw_sapp_credit_card as cc \
