@@ -31,13 +31,14 @@ Following datasets are used for this project
 
 •	Understanding trend of how many loans application got approved based on employment and marital status. 
 # Built With
-•	Python, Pandas,  Seaborn, Matplotlib
+•	Python, Pandas,  Seaborn, Matplotlib,plotly Express
 
 •	PySpark 
 
 •	Mysql (Heidi sql GUI)
 
 •	Jupyter Notebook
+
 
 # Procedures for ETL Project
 1.	Import Python libraries 
@@ -70,9 +71,13 @@ ETL Pipeline is successfully done by extracting, transformed and loaded in mySql
 
 Thats hovering scatter plot which shows the customer with high transaction value and its valuable customer for bank.
 
-![10new](https://user-images.githubusercontent.com/118309716/221956693-6a092e00-5934-46c8-b95a-5d4cb402d54c.png)
+
 ## DAV: State has a high number of customers
-![9bystate](https://user-images.githubusercontent.com/118309716/221956748-d2575f45-396f-4a18-80db-d95be8f6656d.png)
+
+![sunburst-state](https://user-images.githubusercontent.com/118309716/222509730-2e6f4870-295d-4f62-ba37-1af725ec70b3.png)
+ 
+ This sunburst grpah shows NY has high number oftransaction values from all the states.their purchasing power is way higher than other states
+
 
 ## DAV: TransType has a high rate of trans
 ![8transbyTpe](https://user-images.githubusercontent.com/118309716/221957568-51df279e-db89-4772-a1b6-e3f44ec12836.png)
